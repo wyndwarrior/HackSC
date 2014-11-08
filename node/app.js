@@ -1,4 +1,6 @@
+var mongoose = require('mongoose');
 var express = require('express');
+var preston = require('preston');
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
@@ -17,7 +19,7 @@ app.post('/position_updates', function(req, res) {
   }
 });
 
-app.post('/positions', function(req, res) {
+app.all('/positions', function(req, res) {
   res.json(db.lastPosition);
 });
 
