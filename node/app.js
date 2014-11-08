@@ -11,7 +11,7 @@ app.post('/position_updates', function(req, res) {
     db.lastPosition = JSON.parse(req.body.data);
     res.send('OK');
   } catch (e) {
-    res.send('ERR');
+    res.send('ERR: ' + e.toString());
   }
 });
 
