@@ -1,0 +1,4 @@
+HackSC
+======
+
+HackSC Project
