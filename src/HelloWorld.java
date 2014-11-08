@@ -14,11 +14,11 @@ public class HelloWorld extends HttpServlet {
 	    PrintWriter out = response.getWriter();
 	    switch(action){
 	    case "put":
-		s += request.getParameter("data");
+		s = request.getParameter("data");
 		out.println("success");
 		break;
 	    case "get":
-		out.println(s);
+		out.println("<script>setTimeout(function() { location.reload() },1000)</script>"+s);
 		break;
 	    case "clear":
 		s = "";
