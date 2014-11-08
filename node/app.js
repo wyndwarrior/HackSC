@@ -17,7 +17,7 @@ app.post('/position_updates', function(req, res) {
   }
 });
 
-app.get('/positions', function(req, res) {
+app.post('/positions', function(req, res) {
   res.json(db.lastPosition);
 });
 
