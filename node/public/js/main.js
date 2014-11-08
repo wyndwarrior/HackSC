@@ -23,27 +23,4 @@ function api(cmd, data, callb){
         });
 }
 
-function refreshData(){
-    api('positions', null, function(data){
-	if(data){
-	    var count = 0;
-	    $("#main0").html('');
-            $("#main1").html('');
-            $("#main2").html('');
-	    for(var i in data){
-		//console.log(i);
-		var v = data[i];
-		$("#main"+((count++)%3)).append("<p><b>"+i+"</b></p>"+
-				 "<span>"+v[0]+"</span><br/>"+
-				 "<span>"+v[1]+"</span><br/>"+
-				 "<p>"+v[2]+"</p>");
-	    }
-	}
-    });
-}
-
-$(document).ready(function(){
-    setInterval(refreshData, 1000);
-});
-
 
