@@ -8,7 +8,7 @@ var db = {};
 
 app.post('/position_updates', function(req, res) {
   try {
-    db.lastPosition = JSON.parse(req.data.data);
+    db.lastPosition = JSON.parse(req.body.data);
     res.send('OK');
   } catch (e) {
     res.send('ERR');
