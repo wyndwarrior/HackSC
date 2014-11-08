@@ -7,8 +7,12 @@ app.use(require('body-parser').text());
 var db = {};
 
 app.post('/position_updates', function(req, res) {
-  db.lastPosition = JSON.parse(req.data.data);
-  res.send('OK');
+  try {
+    db.lastPosition = JSON.parse(req.data.data);
+    res.send('OK');
+  } catch (e) {
+    res.send('ERR');
+  }
 });
 
 app.get('/', function(req, res) {
