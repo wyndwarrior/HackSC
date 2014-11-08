@@ -349,7 +349,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
                         post["data"] = data;
                         post["action"] = "put";
 
-                        var response = wb.UploadValues("http://wynd.cloudapp.net:8080/test/test3", "POST", post);
+                        var response = wb.UploadValues("http://wynd.cloudapp.net/test/test3", "POST", post);
                     }
 
                     Console.WriteLine(data);
