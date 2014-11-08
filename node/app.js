@@ -10,7 +10,7 @@ var db = {};
 
 app.post('/position_updates', function(req, res) {
   try {
-    db.lastPosition = req.body;
+    db.lastPosition = JSON.parse(req.body);
     res.send('OK');
   } catch (e) {
     res.send('ERR: ' + e.toString());
