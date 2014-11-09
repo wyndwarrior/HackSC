@@ -12,7 +12,7 @@ function update(){
 		drawIn(data[i], c);
 		perc = Math.max(perc, match(data[i], test));
 	    }
-	    $("#asdf").html(perc.toFixed(2)+"%");
+	    $("#match").html(perc.toFixed(2)+"%");
 	}
     });
 }

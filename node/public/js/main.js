@@ -64,6 +64,7 @@ function chooseCanvas(can){
 function snapshot(can){
     $("#cap"+can).button('reset');
     fdata = curData[can];
+    clearr(document.getElementById('fcanvas'));
     drawIn(fdata, document.getElementById('fcanvas'));
     $("#rCapture").hide(0);
     $("#fCapture").show(0);
