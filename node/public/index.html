@@ -53,7 +53,6 @@
       <div class="col-xs-9 col-xs-offset-3 col-md-10 col-md-offset-2 main">
         <div ng-if="!activePatient" id="row1">
           <h3>Select a patient on the left</h3>
-          <div style="height: 10000px; overflow: none;"><br /></div>
         </div>
 
         <div ng-if="activePatient">
@@ -84,16 +83,19 @@
             </table>
           </div>
           <a class="btn btn-primary">Create new routine</a>
-
         </div>
-      </div>
 
-      <div class="row" id="rCapture">
-      </div>
-      <div id="fCapture">
-        <canvas width="500" height="400" id="fcanvas"></canvas>
-        <br/>
-        <a onClick="retake()" class="btn btn-danger">Retake</a>
+        <!-- dumb -->
+        <div class="hidem" ng-class="{hidden: !activePatient}">
+          <div class="row" id="rCapture">
+          </div>
+          <div id="fCapture">
+            <canvas width="500" height="400" id="fcanvas"></canvas>
+            <br/>
+            <a onClick="retake()" class="btn btn-danger">Retake</a>
+          </div>
+        </div>
+
       </div>
 
     </div>
