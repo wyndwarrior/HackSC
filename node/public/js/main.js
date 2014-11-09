@@ -46,7 +46,9 @@ function pull(){
 	    }
 		
 	    for(var i in data){
-		drawIn(data[i], document.getElementById('can'+i));
+		var e = document.getElementById('can'+i);
+		clear(e);
+		drawIn(data[i], e);
 	    }
 	}
     });
@@ -63,6 +65,7 @@ function snapshot(can){
     drawIn(fdata, document.getElementById('fcanvas'));
     $("#rCapture").hide(0);
     $("#fCapture").show(0);
+    console.log(""+JSON.stringify(fdata));
 }
 
 function retake(){
@@ -102,13 +105,18 @@ function to2D(p, w, h){
     return [Math.floor(w*(p[0]+LEN)/(2*LEN)), Math.floor(h*(1-(p[1]+LEN)/(2*LEN)))]
 }
 
-function drawIn(data, canvas){
+function clear(canvas){
     context = canvas.getContext('2d');
 
     context.save();
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.restore();
+
+}
+
+function drawIn(data, canvas){
+    context = canvas.getContext('2d');
     for(var i = 0; i<order.length; i+=2){
 	drawLine(to2D(data[order[i]], canvas.width, canvas.height), to2D(data[order[i+1]], canvas.width, canvas.height), context);
     }
