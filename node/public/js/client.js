@@ -34,3 +34,11 @@ var test = {"SpineBase":[0.04681206,-0.2813448,1.739246],"SpineMid":[0.04564117,
 
 
 $(document).ready(startUpdate);
+angular.module('hacksc', ['restangular'])
+
+.controller('MainCtrl', function($scope) {
+
+  $scope.title = 'MapReduceMyFitness';
+
+
+});

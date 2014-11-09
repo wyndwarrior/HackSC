@@ -85,24 +85,32 @@ function drawLine(p1, p2, context){
     context.lineCap = 'round';
     context.strokeStyle = 'red';
     context.stroke();
-    point(p1[0], p1[1], context);
-        point(p2[0], p2[1], context);
+    point(p1[0], p1[1], p1[2], context);
+        point(p2[0], p2[1], p2[2], context);
 }
 
-function point(x, y, context){
+function point(x, y, z, context){
   context.beginPath();
   context.moveTo(x, y);
   context.lineTo(x+1, y+1);
 context.lineWidth = 7;
     context.lineCap = 'round';
-    context.strokeStyle = 'blue';
+    context.strokeStyle = 'rgba(0,0,255,' + z/3 + ')';
   context.stroke();
 }
 
 var LEN = 1;
 
 function to2D(p, w, h){
-    return [Math.floor(w*(p[0]+LEN)/(2*LEN)), Math.floor(h*(1-(p[1]+LEN)/(2*LEN)))]
+    // p is arr[3]
+    // map xyz to wh
+    // x and y [-1, 1]
+    // z [0, 3], but generally 1 to 2
+    // for w, scale xE[-1, 1] to [0, 2], to [0, 1]
+    // for h, scale yE[-1, 1] to [0, 2], to [0, 1], to [1, 0] cuz h goes down
+    // z modifier: for both w and h, multiply by z/3
+
+    return [Math.floor(w*(p[0]*(p[2]/3)+LEN)/(2*LEN)), Math.floor(h*(1-(p[1]*(p[2]/3)+LEN)/(2*LEN)))]
 }
 
 function clear(canvas){
