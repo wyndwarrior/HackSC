@@ -82,18 +82,38 @@
               </tbody>
             </table>
           </div>
-          <a class="btn btn-primary">Create new routine</a>
         </div>
 
-        <!-- dumb -->
-        <div ng-class="{hidden: !activePatient}">
-          <div class="row" id="rCapture">
+        <div class="row" ng-class="{hidden: !activePatient}">
+          <div class="col-md-3">
+            <h3 class="page-header">Create New Routine</h3>
+            <form role="form">
+              <div class="form-group">
+                <label>Name</label>
+                <input ng-model="routine.name" type="text" class="form-control" id="rName" placeholder="Routine Name">
+              </div>
+              <div class="form-group">
+                <label>Reptitions</label>
+                <input ng-model="routine.repetitions" type="number" class="form-control" id="rReps" placeholder="Repetitions">
+              </div>
+              <div class="form-group">
+                <label>Diet</label>
+                <input ng-model="routine.diet" type="text" class="form-control" id="rDiet" placeholder="Diet Specifications">
+              </div>
+            </form>
           </div>
-          <div id="fCapture">
-            <canvas width="500" height="400" id="fcanvas"></canvas>
-            <br/>
-            <a onClick="retake()" class="btn btn-danger">Retake</a>
+
+          <!-- dumb -->
+          <div class="col-md-9">
+            <div class="row" id="rCapture">
+            </div>
+            <div id="fCapture">
+              <canvas width="500" height="400" id="fcanvas"></canvas>
+              <br/>
+              <a onClick="retake()" class="btn btn-danger">Retake</a>
+            </div>
           </div>
+
         </div>
 
       </div>
