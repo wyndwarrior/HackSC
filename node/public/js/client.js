@@ -37,8 +37,6 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
         return;
       }
 
-      console.log(patientName);
-
       Patients.post({
         name: patientName
       }).then(function() {
