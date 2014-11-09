@@ -15,10 +15,13 @@ function update() {
         perc = Math.max(perc, match(data[i], test));
       }
       $("#match").html(perc.toFixed(2) + "%");
-      correctness = perc;
+	if(typeof scope === 'undefined') 
+	    return;
+	scope.correct = perc.toFixed(2) + "%";
+	scope.$apply();
 	if( scope.routine.curreps == 0){
 	    setMessage("You're done! :)");
-	}else if (perc > 70){
+	}else if (perc > 80){
 	    startTimer();
 	    if( scope.routine.timer > 0 ){
 		setMessage("Maintain pose for " + scope.routine.timer + " seconds.");
@@ -28,6 +31,11 @@ function update() {
 	}else{
 	    setMessage(scope.routine.curreps + " reps remaining");
 	    stopTimer();
+	}
+	if (perc > 80){
+	    $('#cor').addClass('green').removeClass('red');
+	}else{
+	    $('#cor').addClass('red').removeClass('green');
 	}
     }
   });
