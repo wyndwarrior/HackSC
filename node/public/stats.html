@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- much source, very html -->
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" id="viewport" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>InsertNameHere</title>
+    <script>
+      
+function refreshData(){
+    api('positions', null, function(data){
+        if(data){
+            var count = 0;
+            $("#main0").html('');
+            $("#main1").html('');
+            $("#main2").html('');
+
+            $("#main3").html('');
+            for(var i in data){
+                //console.log(i);                                                                                                                                               
+                var v = data[i];
+                $("#main"+((count++)%4)).append("<p><b>"+i+"</b></p>"+
+                                 "<span>"+v[0]+"</span><br/>"+
+                                 "<span>"+v[1]+"</span><br/>"+
+                                 "<p>"+v[2]+"</p>");
+            }
+        }
+    });
+}
+
+$(document).ready(function(){
+    setInterval(refreshData, 250);
+});
+
+
+    </script>
+</head>
+<body>
+<div class="row">
+        <div class="col-sm-3" id="main0"></div>
+        <div class="col-sm-3" id="main1"></div>
+        <div class="col-sm-3" id="main2"></div>
+        <div class="col-sm-3" id="main3"></div>
+</div>
+</body>
+</html>
