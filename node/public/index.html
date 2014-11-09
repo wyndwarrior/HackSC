@@ -45,16 +45,18 @@
           </li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li ng-repeat="patient in patients"><a href="#">{{ patient.name }}</a>
+          <li ng-class="{active: activePatient.name == patient.name}" ng-repeat="patient in patients" ng-click="setPatient(patient)"><a href="#">{{ patient.name }}</a>
           </li>
         </ul>
       </div>
+
       <div class="col-xs-9 col-xs-offset-3 col-md-10 col-md-offset-2 main">
-        <div id="row1">
+        <div ng-if="!activePatient" id="row1">
           <h3>Select a patient on the left</h3>
         </div>
-        <div id="row2">
-          <h2 id="pname">Patient Name</h2>
+
+        <div ng-if="activePatient">
+          <h2 id="pname">{{ activePatient.name }}</h2>
           <br/>
           <h4>Routines</h4>
           <div class="table-responsive">
@@ -81,8 +83,7 @@
             </table>
           </div>
           <a class="btn btn-primary">Create new routine</a>
-        </div>
-        <div id="row3">
+
           <h3 class="sub-header">Create New Routine</h3>
           <form role="form">
             <div class="form-group">
@@ -99,17 +100,19 @@
             </div>
             <div class="row" id="rCapture">
             </div>
-	    <div id="fCapture">
-	      <canvas width="500" height="400" id="fcanvas"></canvas>
-	      <br/>
-	      <a onClick="retake()" class="btn btn-danger">Retake</a>
-	    </div>
+            <div id="fCapture">
+              <canvas width="500" height="400" id="fcanvas"></canvas>
+              <br/>
+              <a onClick="retake()" class="btn btn-danger">Retake</a>
+            </div>
             <br/>
             <button type="submit" class="btn btn-default">Submit</button>
-	    <br/><br/>
+            <br/>
+            <br/>
           </form>
         </div>
       </div>
+
     </div>
   </div>
 
