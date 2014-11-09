@@ -1,5 +1,5 @@
 function startUpdate(){
-    setInterval(update, 70);
+    setInterval(update, 250);
 }
 
 function update(){
