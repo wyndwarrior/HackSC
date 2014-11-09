@@ -46,8 +46,10 @@ function pull(){
 	    }
 		
 	    for(var i in data){
+console.log(i + " " +data.length);
 		var e = document.getElementById('can'+i);
-		clear(e);
+		//console.log(e.getContext("2d"));
+		clearr(e);
 		drawIn(data[i], e);
 	    }
 	}
@@ -113,18 +115,19 @@ function to2D(p, w, h){
     return [Math.floor(w*(p[0]*(p[2]/3)+LEN)/(2*LEN)), Math.floor(h*(1-(p[1]*(p[2]/3)+LEN)/(2*LEN)))]
 }
 
-function clear(canvas){
-    context = canvas.getContext('2d');
+function clearr(c){
+    console.log("wtf"+c);
+    var context = c.getContext('2d');
 
     context.save();
     context.setTransform(1, 0, 0, 1, 0, 0);
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, c.width, c.height);
     context.restore();
 
 }
 
 function drawIn(data, canvas){
-    context = canvas.getContext('2d');
+    var context = canvas.getContext('2d');
     for(var i = 0; i<order.length; i+=2){
 	drawLine(to2D(data[order[i]], canvas.width, canvas.height), to2D(data[order[i+1]], canvas.width, canvas.height), context);
     }
