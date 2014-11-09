@@ -12,6 +12,10 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
   $scope.prescriptions = Prescriptions.getList().$object;
   $scope.foods = Foods.getList().$object;
 
+  $scope.setPatient = function(patient) {
+    $scope.activePatient = patient;
+  };
+
   $scope.openNewPatientModal = function() {
 
     var modalInstance = $modal.open({
