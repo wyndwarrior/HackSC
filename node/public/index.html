@@ -56,7 +56,7 @@
         </div>
 
         <div ng-if="activePatient">
-          <h2 id="pname">Patient Info for {{ activePatient.name }}</h2>
+          <h2 id="pname">Patient Info for {{ activePatient.name }} <button class="btn btn-danger" ng-click="deleteActivePatient()">Delete</button></h2>
           <br/>
           <h4>Routines</h4>
           <div class="table-responsive">

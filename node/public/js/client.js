@@ -10,6 +10,12 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
   $scope.patients = Patients.getList().$object;
   $scope.foods = Foods.getList().$object;
 
+  $scope.deleteActivePatient = function() {
+    $scope.activePatient.remove();
+    $scope.activePatient = null;
+    $scope.patients = Patients.getList().$object;
+  };
+
   $scope.setPatient = function(patient) {
     $scope.activePatient = patient;
     $scope.prescriptions = $scope.activePatient.getList('Prescriptions').$object;
