@@ -16,6 +16,7 @@
   <script src="js/ui-bootstrap.min.js"></script>
   <script src="js/client.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/patient.js"></script>
 
 
 <script type="text/javascript">var switchTo5x=true;</script>
@@ -43,7 +44,10 @@
   </nav>
  -->
 
-           <h3>Well done! You did 125 jumping jacks! </h3>
+           <h3>Well done! {{ patient.name }} did {{ patient.exercise }}! </h3>
+
+           <h4>Join {{ patient.name }} at <a href="http://wynd.cloudapp.net/"> FitnessTrackr!</a>
+           </h4>
            <br>
 
 <span class='st_facebook_hcount' displayText='Facebook'></span>
