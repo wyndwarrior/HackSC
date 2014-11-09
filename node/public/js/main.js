@@ -111,8 +111,8 @@ function to2D(p, w, h){
     // for w, scale xE[-1, 1] to [0, 2], to [0, 1]
     // for h, scale yE[-1, 1] to [0, 2], to [0, 1], to [1, 0] cuz h goes down
     // z modifier: for both w and h, multiply by z/3
-
-    return [Math.floor(w*(p[0]*(p[2]/3)+LEN)/(2*LEN)), Math.floor(h*(1-(p[1]*(p[2]/3)+LEN)/(2*LEN)))]
+    var zscale = 1-Math.min(p[2], 3.5)/3.5
+    return [Math.floor(w*(p[0]*zscale+LEN)/(2*LEN)), Math.floor(h*(1-(p[1]*zscale+LEN)/(2*LEN)))]
 }
 
 function clearr(c){
