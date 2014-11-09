@@ -15,10 +15,10 @@ var Patient = mongoose.model('Patient', new Schema({
 
 var Prescription = mongoose.model('Prescription', new Schema({
   name: String,
-    prescribed: {
-      type: Schema.Types.ObjectId,
+  prescribed: {
+    type: Schema.Types.ObjectId,
     ref: 'Patient'
-    },
+  },
   food: [{
     type: Schema.Types.ObjectId,
     ref: 'Food'
@@ -41,6 +41,8 @@ app.use(require('body-parser').json());
 app.use(require('body-parser').urlencoded({
   extended: true
 }));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 app.use('/api', preston.middleware());
 
 var db = {};
@@ -56,6 +58,12 @@ app.post('/position_updates', function(req, res) {
 
 app.all('/positions', function(req, res) {
   res.json(db.lastPosition);
+});
+
+app.get('/shared', function(req, res) {
+  res.render('shared', {
+    title: req.query.title
+  });
 });
 
 app.listen(3000);
