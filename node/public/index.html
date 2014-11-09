@@ -14,7 +14,6 @@
   <script src="js/angular.min.js"></script>
   <script src="js/restangular.min.js"></script>
   <script src="js/ui-bootstrap.min.js"></script>
-  <script src="js/angular-ui-router.min.js"></script>
   <script src="js/client.js"></script>
   <script src="js/main.js"></script>
   <!--[if lt IE 9]>
@@ -24,6 +23,7 @@
   <title>MapReduceMyFitness</title>
   <script>
     startPull();
+    $(document).ready(retake);
   </script>
 </head>
 
@@ -57,7 +57,7 @@
         </div>
 
         <div ng-if="activePatient">
-          <h2 id="pname">Patient Info for {{ activePatient.name }} <button class="btn btn-danger" ng-click="deleteActivePatient()">Delete</button></h2>
+          <h2 id="pname">Patient Info for {{ activePatient.name }}</h2>
           <br/>
           <h4>Routines</h4>
           <div class="table-responsive">
@@ -67,8 +67,8 @@
                   <th>Name</th>
                   <th>Repetitions</th>
                   <th>Status</th>
-                  <th>Diet</th>
-                  <th>Actions</th>
+<!--                   <th>Diet</th>
+ -->                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,13 +76,15 @@
                   <td>{{ pres.name }}</td>
                   <td>{{ pres.repetitions }}</td>
                   <td>Incomplete</td>
-                  <td>Normal</td>
+                  <!-- <td>Normal</td> -->
                   <td><a href="#">Edit</a>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <br/>
+          <button class="btn btn-danger" ng-click="deleteActivePatient()">Delete this patient</button>  <a target="_blank" ng-href="patient.html#/patient/{{activePatient.id}}" class="btn btn-primary" >Link to Patient</a><br/><br/>  
         </div>
 
         <div class="row" ng-class="{hidden: !activePatient}">
@@ -97,10 +99,10 @@
                 <label>Repetitions</label>
                 <input ng-model="routine.repetitions" type="number" class="form-control" id="rReps" placeholder="Repetitions">
               </div>
-              <div class="form-group">
+<!--               <div class="form-group">
                 <label>Diet</label>
                 <input ng-model="routine.diet" type="text" class="form-control" id="rDiet" placeholder="Diet Specifications">
-              </div>
+              </div> -->
               <input type="submit" class="btn btn-primary" value="Submit" />
             </form>
           </div>

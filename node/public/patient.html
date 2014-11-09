@@ -58,10 +58,10 @@
 
             <h1>{{ routine.name }}</h1>
             <table class="table table-striped">
-              <tr>
+<!--               <tr>
                 <th>Diet</th>
                 <td>{{routine.diet}}</td>
-              </tr>
+              </tr> -->
               <tr>
                 <th>Repetitions</th>
                 <td>{{routine.repetitions}}</td>
@@ -69,10 +69,11 @@
               <tr>
                 <th>Correctness</th>
                 <td id="match">n/a</td>
+                console.log(match)
               </tr>
               <tr>
                 <th>Remaining Reps</th>
-                <td id="match">10/{{routine.repetitions}}</td>
+                <td id="match">0/{{routine.repetitions}}</td>
               </tr>
             </table>
 
@@ -81,9 +82,13 @@
           </div>
 
           <div class="col-md-8">
-            <h1>You</h1>
+            <h1>{{patient.name}}</h1>
             <canvas width="500" height="400" id="can"></canvas>
           </div>
+
+          <br>
+
+          <h3>Timer: 5</h3>
 
         </div>
       </div>
