@@ -54,6 +54,7 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
     }).then(function() {
       $scope.routine = {};
       $scope.prescriptions = $scope.activePatient.getList('Prescriptions').$object;
+      retake();
     });
   };
 
