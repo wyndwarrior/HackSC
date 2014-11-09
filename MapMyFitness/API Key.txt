@@ -1,0 +1,4 @@
+Client Key:				vh85bsr35vuqjdgykbbr2wewthhsr3by
+Client Secret:			huKcKpXftVuGNsMeqHVDcwf2pnKJQW8gyeYkFxJSXvy
+Authorization Code:		b63dd939ed5c875b029f0730087b80073976d246
+Access Token:			13617f890980ddf0338e6f610cdb5ef88571c692
