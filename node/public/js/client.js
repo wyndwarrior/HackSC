@@ -50,7 +50,7 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
     $scope.activePatient.post('Prescriptions', {
       name: routine.name,
       repetitions: routine.repetitions,
-      data: routine.data
+      data: window.fdata
     }).then(function() {
       $scope.routine = {};
       $scope.prescriptions = $scope.activePatient.getList('Prescriptions').$object;

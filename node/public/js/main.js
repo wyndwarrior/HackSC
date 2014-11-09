@@ -68,6 +68,7 @@ function snapshot(can) {
   fdata = curData[can];
   clearr(document.getElementById('fcanvas'));
   drawIn(fdata, document.getElementById('fcanvas'));
+  window.posData = fdata;
   $("#rCapture").hide(0);
   $("#fCapture").show(0);
   console.log("" + JSON.stringify(fdata));
