@@ -5,15 +5,14 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
   $scope.title = 'MapReduceMyFitness';
 
   var Patients = Restangular.all('api/patients');
-  var Prescriptions = Restangular.all('api/prescriptions');
   var Foods = Restangular.all('api/foods');
 
   $scope.patients = Patients.getList().$object;
-  $scope.prescriptions = Prescriptions.getList().$object;
   $scope.foods = Foods.getList().$object;
 
   $scope.setPatient = function(patient) {
     $scope.activePatient = patient;
+    $scope.prescriptions = $scope.activePatient.getList('Prescriptions').$object;
   };
 
   $scope.openNewPatientModal = function() {
@@ -42,6 +41,19 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
       }).then(function() {
         $scope.patients = Patients.getList().$object;
       });
+    });
+  };
+
+  $scope.createRoutine = function() {
+    var routine = $scope.routine;
+
+    $scope.activePatient.post('Prescriptions', {
+      name: routine.name,
+      repetitions: routine.repetitions,
+      data: routine.data
+    }).then(function() {
+      $scope.routine = {};
+      $scope.prescriptions = $scope.activePatient.getList('Prescriptions').$object;
     });
   };
 

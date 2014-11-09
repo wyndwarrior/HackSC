@@ -71,9 +71,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Warrior pose</td>
-                  <td>10</td>
+                <tr ng-repeat="pres in prescriptions">
+                  <td>{{ pres.name }}</td>
+                  <td>{{ pres.repetitions }}</td>
                   <td>Incomplete</td>
                   <td>Normal</td>
                   <td><a href="#">Edit</a>
@@ -87,19 +87,20 @@
         <div class="row" ng-class="{hidden: !activePatient}">
           <div class="col-md-3">
             <h3 class="page-header">Create New Routine</h3>
-            <form role="form">
+            <form role="form" ng-submit="createRoutine()">
               <div class="form-group">
                 <label>Name</label>
                 <input ng-model="routine.name" type="text" class="form-control" id="rName" placeholder="Routine Name">
               </div>
               <div class="form-group">
-                <label>Reptitions</label>
+                <label>Repetitions</label>
                 <input ng-model="routine.repetitions" type="number" class="form-control" id="rReps" placeholder="Repetitions">
               </div>
               <div class="form-group">
                 <label>Diet</label>
                 <input ng-model="routine.diet" type="text" class="form-control" id="rDiet" placeholder="Diet Specifications">
               </div>
+              <input type="submit" class="btn btn-primary" value="Submit" />
             </form>
           </div>
 

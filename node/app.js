@@ -10,15 +10,15 @@ var Patient = mongoose.model('Patient', new Schema({
     type: String,
     required: true,
     unique: true
-  },
-  prescriptions: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Prescription'
-  }]
+  }
 }));
 
 var Prescription = mongoose.model('Prescription', new Schema({
   name: String,
+    prescribed: {
+      type: Schema.Types.ObjectId,
+    ref: 'Patient'
+    },
   food: [{
     type: Schema.Types.ObjectId,
     ref: 'Food'
@@ -32,7 +32,8 @@ var Food = mongoose.model('Food', new Schema({
   calories: Number
 }));
 
-preston(Patient, Prescription, Food);
+preston(Patient).submodel('prescriptions', 'prescribed', Prescription);
+preston(Food);
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
