@@ -19,6 +19,7 @@ function update() {
 	    return;
 	scope.correct = perc.toFixed(2) + "%";
 	scope.$apply();
+	$("#shareme").attr('href', 'http://rest.sharethis.com/v1/share/share?destination=facebook&api_key=7kx3bh9xescuyz9hkj5gruwr&url='+encodeURI("http://wynd.cloudapp.net/shared?title="+encodeURI("I did "+scope.routine.repetitions+" "+scope.routine.name+"!")+"&msg=yay"));
 	if( scope.routine.curreps == 0){
 	    setMessage("You're done! :)");
 	}else if (perc > 80){
