@@ -2,9 +2,7 @@ function startUpdate() {
   setInterval(update, 250);
 }
 
-var correctness = 0;
-var timer = 5;
-var repsLeft = 5;
+var STARTTIMER = 3;
 
 function update() {
   api("positions", null, function(data) {
@@ -18,22 +16,59 @@ function update() {
       }
       $("#match").html(perc.toFixed(2) + "%");
       correctness = perc;
+	if( scope.routine.curreps == 0){
+	    setMessage("You're done! :)");
+	}else if (perc > 70){
+	    startTimer();
+	    if( scope.routine.timer > 0 ){
+		setMessage("Maintain pose for " + scope.routine.timer + " seconds.");
+	    }else{
+		setMessage("Now relax");
+	    }
+	}else{
+	    setMessage(scope.routine.curreps + " reps remaining");
+	    stopTimer();
+	}
     }
   });
 
-  if (perc > 0.7){
-    setInterval(decrementTimer, 1000);
-  }else{
-    timer = 5;
-  }
+}
 
-  if(timer == 0){
-    repsLeft--;
-  }
+var timerStarted = false;
+var lastInterval = null;
+
+function startTimer(){
+    if( !timerStarted ){
+	timerStarted = true;
+	setTimer(STARTTIMER);
+	lastInterval = setInterval(decrementTimer, 1000);
+    }
+}
+
+function setMessage(value){
+    window.scope.message = value;
+    window.scope.$apply();
+}
+
+function setTimer(value){
+    window.scope.routine.timer= value;
+    window.scope.$apply();
+    if( value == 0 ){
+	window.scope.routine.curreps--;
+	window.scope.$apply();
+    }
+}
+
+function stopTimer(){
+    if( timerStarted ){
+	timerStarted = false;
+	setTimer(STARTTIMER);
+	clearInterval(lastInterval);
+    }
 }
 
 function decrementTimer(){
-  timer--;
+    setTimer(window.scope.routine.timer-1);
 }
 
 $(document).ready(startUpdate);

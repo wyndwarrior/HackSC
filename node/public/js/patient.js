@@ -22,8 +22,12 @@ angular.module('hacksc-client', ['restangular', 'ui.bootstrap', 'ui.router'])
     test = routine.data;
     clearr(document.getElementById('action'));
     drawIn(test, document.getElementById('action'), 5 * 300 / 500);
-    $scope.routine = routine;
+    routine.curreps = routine.repetitions;
+      routine.timer = STARTTIMER;
+      $scope.routine = routine;
     updateData();
+      window.scope = $scope;
+      $scope.message = "";
   };
 
   function updateData() {
