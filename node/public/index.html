@@ -67,8 +67,7 @@
                   <th>Name</th>
                   <th>Repetitions</th>
                   <th>Status</th>
-<!--                   <th>Diet</th>
- -->                  <th>Actions</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,8 +75,8 @@
                   <td>{{ pres.name }}</td>
                   <td>{{ pres.repetitions }}</td>
                   <td>Incomplete</td>
-                  <!-- <td>Normal</td> -->
-                  <td><a href="#">Edit</a>
+                  <td><a class="btn btn-warning" href="#">Edit</a>
+<a href="#" class="btn btn-danger" ng-click="deletePres(pres)">Delete</a>
                   </td>
                 </tr>
               </tbody>

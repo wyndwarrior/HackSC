@@ -21,6 +21,11 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
     $scope.prescriptions = $scope.activePatient.getList('Prescriptions').$object;
   };
 
+  $scope.deletePres = function(pres) {
+    pres.remove();
+    $scope.prescriptions = $scope.activePatient.getList('Prescriptions').$object;
+  };
+
   $scope.openNewPatientModal = function() {
 
     var modalInstance = $modal.open({
