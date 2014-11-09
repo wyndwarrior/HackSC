@@ -28,6 +28,7 @@ angular.module('hacksc-client', ['restangular', 'ui.bootstrap', 'ui.router'])
     updateData();
       window.scope = $scope;
       $scope.message = "";
+      $scope.correct = "";
   };
 
   function updateData() {
