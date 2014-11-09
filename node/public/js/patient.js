@@ -21,6 +21,7 @@ angular.module('hacksc-client', ['restangular', 'ui.bootstrap', 'ui.router'])
   $scope.setRoutine = function(routine) {
     $scope.routine = routine;
     test = routine.data;
+    clearr(document.getElementById('action'));
     drawIn(test, document.getElementById('action'));
     updateData();
   };
