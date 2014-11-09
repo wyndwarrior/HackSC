@@ -23,4 +23,19 @@ function api(cmd, data, callb){
         });
 }
 
+function refreshData(){
+    api('positions', null, function(data){
+	if(data){
+	    for(var i in data){
+		var v = data[i];
+		$("#main").append("<span>"+i+"</span>");
+	    }
+	}
+    });
+}
+
+$(function(){
+    setInterval(refreshData, 1000);
+});
+
 
