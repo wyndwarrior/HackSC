@@ -329,31 +329,42 @@ namespace Microsoft.Samples.Kinect.BodyBasics
             if (dataReceived && (limiter++ % 40 == 0)) // rate limiting step
             {
                 int i = 0;
+
+                string data = "[";
+                
                 foreach (Body body in this.bodies)
                 {
                     if (body.Joints[JointType.HipLeft].Position.X == 0)
                     {
                         continue;
                     }
-                    string data = "{";
+                    data += "{";
                     foreach (KeyValuePair<JointType, Joint> joint in body.Joints)
                     {
-                        data += "\"" + joint.Key + "\": \"" + joint.Value.Position.X + ":" + joint.Value.Position.Y + ":" + joint.Value.Position.Z + "\", \n";
+                        data += "\"" + joint.Key + "\": [" + joint.Value.Position.X + "," + joint.Value.Position.Y + "," + joint.Value.Position.Z + "],";
                     }
-                    data = data.Substring(0, data.Length - 3);
-                    data += "}";
+                    data = data.Substring(0, data.Length - 1);
+                    data += "},";
 
-                    using (var wb = new WebClient())
-                    {
-                        var post = new NameValueCollection();
-                        post["data"] = data;
-                        post["action"] = "put";
-
-                        var response = wb.UploadValues("http://wynd.cloudapp.net/test/test3", "POST", post);
-                    }
-
-                    Console.WriteLine(data);
                 }
+                data = data.Substring(0, data.Length - 1) + "]";
+
+                using (var wb = new WebClient())
+                {
+                    var post = new NameValueCollection();
+                    post["data"] = data;
+                    post["action"] = "put";
+
+                    try
+                    {
+                        var response = wb.UploadValues("http://wynd.cloudapp.net/position_updates", "POST", post);
+                    }
+                    catch (Exception exception)
+                    {
+                        // pass
+                    }
+                }
+                Console.WriteLine(data);
             }
             // END hacksc
 
