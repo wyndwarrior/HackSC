@@ -19,10 +19,12 @@ angular.module('hacksc-client', ['restangular', 'ui.bootstrap', 'ui.router'])
   $scope.prescriptions = [];
 
   $scope.setRoutine = function(routine) {
-    $scope.routine = routine;
     test = routine.data;
-    clearr(document.getElementById('action'));
+    if ($scope.routine) {
+      clearr(document.getElementById('action'));
+    }
     drawIn(test, document.getElementById('action'), 5 * 300 / 500);
+    $scope.routine = routine;
     updateData();
   };
 
