@@ -62,7 +62,8 @@ app.all('/positions', function(req, res) {
 
 app.get('/shared', function(req, res) {
   res.render('shared', {
-    title: req.query.title
+    title: req.query.title,
+    msg: req.query.msg || 'WyndWarrior strikez again!!!!!!1111!!! #dreamboard'
   });
 });
 
