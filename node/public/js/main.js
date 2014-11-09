@@ -28,11 +28,14 @@ function startPull(){
 }
 
 var canvases = 0;
+var fdata = null;
+var curData = null;
 
 function pull(){
     api("positions", null, function(data){
 	var cap = $('#rCapture');
 	if( data ){
+	    curData = data;
 	    while(canvases < data.length){
 		cap.append('<div id="cap_'+canvases+'" class="col-sm-12"><canvas width="500" height="400" id="can'+canvases+'"></canvas><br/><a class="btn btn-success" onClick="chooseCanvas('+canvases+')" id="cap'+canvases+'" data-loading-text="Capturing in 3...">Capture Pose</a><br/></div>');
 		canvases++;
@@ -43,7 +46,7 @@ function pull(){
 	    }
 		
 	    for(var i in data){
-		drawIn(data[i], i);
+		drawIn(data[i], document.getElementById('can'+i));
 	    }
 	}
     });
@@ -56,6 +59,15 @@ function chooseCanvas(can){
 
 function snapshot(can){
     $("#cap"+can).button('reset');
+    fdata = curData[can];
+    drawIn(fdata, document.getElementById('fcanvas'));
+    $("#rCapture").hide(0);
+    $("#fCapture").show(0);
+}
+
+function retake(){
+    $("#rCapture").show(0);
+    $("#fCapture").hide(0);
 }
 
 var order = "SpineBase SpineMid SpineMid SpineShoulder SpineShoulder Neck Neck Head SpineShoulder ShoulderLeft ShoulderLeft ElbowLeft ElbowLeft WristLeft WristLeft HandLeft SpineShoulder ShoulderRight ShoulderRight ElbowRight ElbowRight WristRight WristRight HandRight SpineBase HipLeft HipLeft KneeLeft KneeLeft AnkleLeft AnkleLeft FootLeft SpineBase HipRight HipRight KneeRight KneeRight AnkleRight AnkleRight FootRight HandTipLeft HandLeft HandLeft ThumbLeft HandTipRight HandRight HandRight ThumbRight".split(" ");
@@ -90,8 +102,7 @@ function to2D(p, w, h){
     return [Math.floor(w*(p[0]+LEN)/(2*LEN)), Math.floor(h*(1-(p[1]+LEN)/(2*LEN)))]
 }
 
-function drawIn(data, i){
-    canvas = document.getElementById('can'+i);
+function drawIn(data, canvas){
     context = canvas.getContext('2d');
 
     context.save();

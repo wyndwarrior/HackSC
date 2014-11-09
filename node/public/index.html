@@ -96,11 +96,16 @@
               <label>Diet</label>
               <input type="text" class="form-control" id="rDiet" placeholder="Diet Specifications">
             </div>
-            <p class="row" id="rCapture">
-
-            </p>
+            <div class="row" id="rCapture">
+            </div>
+	    <div id="fCapture">
+	      <canvas width="500" height="400" id="fcanvas"></canvas>
+	      <br/>
+	      <a onClick="retake()" class="btn btn-danger">Retake</a>
+	    </div>
             <br/>
             <button type="submit" class="btn btn-default">Submit</button>
+	    <br/><br/>
           </form>
         </div>
       </div>
