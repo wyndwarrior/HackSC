@@ -30,6 +30,13 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">{{ title }}</a>
       </div>
+
+      <div id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a><marquee>Now Playing: The Fellowship of the Ring</marquee></a></li>
+        </ul>
+      </div>
+
     </div>
   </nav>
 
@@ -44,6 +51,12 @@
           <li ng-repeat="pres in prescriptions" ng-click="setRoutine(pres)"><a href="">{{ pres.name }}</a>
           </li>
         </ul>
+
+        <ul class="nav nav-sidebar bottom">
+          <li ng-repeat="pres in prescriptions" ng-click="setRoutine(pres)"><a href="">{{ pres.name }}</a>
+          </li>
+        </ul>
+
       </div>
 
       <div class="col-xs-9 col-xs-offset-3 col-md-10 col-md-offset-2 main">
@@ -58,7 +71,7 @@
 
             <h1>{{ patient.name }}</h1>
             <table class="table table-striped">
-<!--               <tr>
+              <!--               <tr>
                 <th>Diet</th>
                 <td>{{routine.diet}}</td>
               </tr> -->
