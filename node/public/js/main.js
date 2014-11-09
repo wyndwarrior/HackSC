@@ -46,7 +46,7 @@ function pull(){
 	    }
 		
 	    for(var i in data){
-console.log(i + " " +data.length);
+//console.log(i + " " +data.length);
 		var e = document.getElementById('can'+i);
 		//console.log(e.getContext("2d"));
 		clearr(e);
@@ -78,7 +78,7 @@ function retake(){
 var order = "SpineBase SpineMid SpineMid SpineShoulder SpineShoulder Neck Neck Head SpineShoulder ShoulderLeft ShoulderLeft ElbowLeft ElbowLeft WristLeft WristLeft HandLeft SpineShoulder ShoulderRight ShoulderRight ElbowRight ElbowRight WristRight WristRight HandRight SpineBase HipLeft HipLeft KneeLeft KneeLeft AnkleLeft AnkleLeft FootLeft SpineBase HipRight HipRight KneeRight KneeRight AnkleRight AnkleRight FootRight HandTipLeft HandLeft HandLeft ThumbLeft HandTipRight HandRight HandRight ThumbRight".split(" ");
 
 function drawLine(p1, p2, context){
-    
+    console.log(p1);
     context.beginPath();
     context.moveTo(p1[0], p1[1]);
     context.lineTo(p2[0], p2[1]);
@@ -97,6 +97,7 @@ function point(x, y, z, context){
   context.lineTo(x+1, y+1);
 context.lineWidth = 7;
     context.lineCap = 'round';
+//console.log('rgba(0,0,255,' + (z/3) + ')');
     context.strokeStyle = 'rgba(0,0,255,' + z/3 + ')';
   context.stroke();
 }
@@ -116,7 +117,6 @@ function to2D(p, w, h){
 }
 
 function clearr(c){
-    console.log("wtf"+c);
     var context = c.getContext('2d');
 
     context.save();
