@@ -2,7 +2,7 @@ angular.module('hacksc', ['restangular', 'ui.bootstrap'])
 
 .controller('MainCtrl', function($scope, Restangular, $modal) {
 
-  $scope.title = 'MapReduceMyFitness';
+  $scope.title = 'Kerve';
 
   var Patients = Restangular.all('api/patients');
   var Foods = Restangular.all('api/foods');

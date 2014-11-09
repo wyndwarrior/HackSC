@@ -13,7 +13,7 @@ angular.module('hacksc-client', ['restangular', 'ui.bootstrap', 'ui.router'])
 })
 
 .controller('MainCtrl', function($scope, Restangular, $stateParams, $state) {
-  $scope.title = 'MapReduceMyFitness';
+  $scope.title = 'Kerve';
 
   $scope.patient = {};
   $scope.prescriptions = [];
