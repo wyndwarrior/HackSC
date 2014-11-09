@@ -22,7 +22,7 @@ angular.module('hacksc-client', ['restangular', 'ui.bootstrap', 'ui.router'])
     $scope.routine = routine;
     test = routine.data;
     clearr(document.getElementById('action'));
-    drawIn(test, document.getElementById('action'), 5 * 500 / 300);
+    drawIn(test, document.getElementById('action'), 5 * 300 / 500);
     updateData();
   };
 
