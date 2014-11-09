@@ -24,7 +24,7 @@ function api(cmd, data, callb) {
 }
 
 function startPull() {
-  setInterval(pull, 70);
+  setInterval(pull, 250);
 }
 
 var canvases = 0;
