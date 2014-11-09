@@ -2,6 +2,10 @@ function startUpdate() {
   setInterval(update, 250);
 }
 
+var correctness = 0;
+var timer = 5;
+var repsLeft = 5;
+
 function update() {
   api("positions", null, function(data) {
     if (data) {
@@ -13,8 +17,23 @@ function update() {
         perc = Math.max(perc, match(data[i], test));
       }
       $("#match").html(perc.toFixed(2) + "%");
+      correctness = perc;
     }
   });
+
+  if (perc > 0.7){
+    setInterval(decrementTimer, 1000);
+  }else{
+    timer = 5;
+  }
+
+  if(timer == 0){
+    repsLeft--;
+  }
+}
+
+function decrementTimer(){
+  timer--;
 }
 
 $(document).ready(startUpdate);
