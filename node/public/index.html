@@ -13,6 +13,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/angular.min.js"></script>
   <script src="js/restangular.min.js"></script>
+  <script src="js/ui-bootstrap.min.js"></script>
   <script src="js/client.js"></script>
   <script src="js/main.js"></script>
   <!--[if lt IE 9]>
@@ -40,11 +41,11 @@
         <ul class="nav nav-sidebar">
           <li class="active"><a href="#">Patients</a>
           </li>
-          <li><a href="#">+ Add new patient</a>
+          <li><a href="#" ng-click="openNewPatientModal()">+ Add new patient</a>
           </li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li><a href="#">Andrew Liu</a>
+          <li ng-repeat="patient in patients"><a href="#">{{ patient.name }}</a>
           </li>
         </ul>
       </div>

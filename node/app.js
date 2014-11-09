@@ -6,7 +6,11 @@ var Schema = mongoose.Schema;
 mongoose.connect('mongodb://localhost:27017');
 
 var Patient = mongoose.model('Patient', new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+    unique: true
+  },
   prescriptions: [{
     type: Schema.Types.ObjectId,
     ref: 'Prescription'
@@ -32,6 +36,7 @@ preston(Patient, Prescription, Food);
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
+app.use(require('body-parser').json());
 app.use(require('body-parser').urlencoded({
   extended: true
 }));
