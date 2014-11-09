@@ -326,7 +326,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
 
             // BEGIN hacksc
             // @author simplyianm
-            if (dataReceived && (limiter++ % 40 == 0)) // rate limiting step
+            if (dataReceived && (limiter++ % 10 == 0)) // rate limiting step
             {
                 int i = 0;
 
@@ -347,7 +347,11 @@ namespace Microsoft.Samples.Kinect.BodyBasics
                     data += "},";
 
                 }
-                data = data.Substring(0, data.Length - 1) + "]";
+                if (data.Length > 1)
+                {
+                    data = data.Substring(0, data.Length - 1);
+                }
+                data += "]";
 
                 using (var wb = new WebClient())
                 {
