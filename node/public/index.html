@@ -23,6 +23,7 @@
   <title>MapReduceMyFitness</title>
   <script>
     startPull();
+    $(document).ready(retake);
   </script>
 </head>
 
@@ -56,7 +57,7 @@
         </div>
 
         <div ng-if="activePatient">
-          <h2 id="pname">Patient Info for {{ activePatient.name }} <button class="btn btn-danger" ng-click="deleteActivePatient()">Delete</button></h2>
+          <h2 id="pname">Patient Info for {{ activePatient.name }}</h2>
           <br/>
           <h4>Routines</h4>
           <div class="table-responsive">
@@ -82,6 +83,8 @@
               </tbody>
             </table>
           </div>
+          <br/>
+          <button class="btn btn-danger" ng-click="deleteActivePatient()">Delete this patient</button>  <a target="_blank" ng-href="patient.html#/patient/{{activePatient.id}}" class="btn btn-primary" >Delete this patient</button>  
         </div>
 
         <div class="row" ng-class="{hidden: !activePatient}">
